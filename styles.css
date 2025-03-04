@@ -1,0 +1,21 @@
+
+.container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+table{
+    padding: 1em;
+    background-color: black;
+}
+
+td{
+    padding: 1em;
+    background-color: black;
+}
+tr{
+    background-color: black;
+}
