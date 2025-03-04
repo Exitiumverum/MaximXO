@@ -5,7 +5,7 @@ html{
 
 body{
     background-color: #c59040;
-    overflow: hidden;
+    /* overflow: hidden; */
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -52,8 +52,6 @@ td{
     font-size: 2em;
     font-family: monospace;
     text-align: center;
-    width: 2em;
-    height: 2em;
 }
 td:hover{
     cursor: pointer;
@@ -93,3 +91,30 @@ tr{
 .hidden{
     display: none;
 }
+
+/* @media (min-width: 600px) {
+    .logo{
+        width: 16em;
+        height: 16em;
+    }
+    td{
+        width: 2em;
+        height: 2em;
+    }
+    
+} */
+
+
+/* @media (max-width: 600px) {
+    .logo{
+        width: 10em;
+        height: 10em;
+    }
+    td{
+        width: 1em;
+        height: 1em;
+    }
+    body{
+        background-color: red;
+    }   
+} */
