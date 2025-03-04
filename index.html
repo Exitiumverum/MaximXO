@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
+    <title>Deformity TOE</title>
+    <link rel="icon" href="./Images/emblem1.png">
 </head>
 <body>
-    <h1>Tic Tac Toe</h1>
+    <!-- <h1>Tic Tac Toe</h1> -->
+     <img src="./Images/logo1.svg" alt="logo" class="logo">
 
     <div class="container">
         <button class="btn">reset</button>
@@ -16,9 +18,15 @@
         </div>
     </div>
 
-    <div class="game-over hidden">
+    <div class="modal game-over hidden">
         <h1>Game Over</h1>
         <h2>Winner: <span class="winner"></span></h2>
+        <button class="btn">reset</button>
+    </div>
+
+    <div class="modal draw hidden">
+        <h1>Game Over</h1>
+        <h2>Draw</h2>
         <button class="btn">reset</button>
     </div>
 </body>

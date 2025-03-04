@@ -1,12 +1,16 @@
-let gameBoard = createGameContainer();
+const AUDIO = new Audio('./Blackened skies mix12.wav'); // Update the path as necessary
 
+let gameBoard = createGameContainer();
 let isXTurn = true;
 let isGameOver = false;
 let whoIsWinner = '';
 
+
+
 if(isGameOver){
     console.log(`${whoIsWinner} is the winner`);
-    document.querySelector('.game-over').classList.remove('hidden');
+    document.querySelector('.modal .game-over').classList.remove('hidden');
+    document.querySelector('.modal .draw').classList.remove('hidden');
 }else{
     renderGameBoard();
 }
@@ -57,7 +61,7 @@ function renderGameBoard() {
 function handleCellClick(event) {
     const cell = event.target;
     if(cell.classList.contains('btn')){
-        console.log('reset');
+        AUDIO.pause();
         
         isXTurn = true;
         isGameOver = false;
@@ -67,6 +71,7 @@ function handleCellClick(event) {
         document.querySelector('.winner').textContent = whoIsWinner;
         renderGameBoard();
         document.querySelector('.game-over').classList.add('hidden');
+        document.querySelector('.draw').classList.add('hidden');
     }
     const row = cell.getAttribute('data-row');
     const col = cell.getAttribute('data-col');
@@ -119,12 +124,20 @@ function checkWin() {
             whoIsWinner = gameBoard[0][2];
             return true;
         }
+
+        if(gameBoard.every(row => row.every(cell => cell !== ' '))){
+            openDrawModal();
+        }
         return false;
         
 }
 
-function openModal(){
-    document.querySelector('.game-over').classList.remove('hidden');
-    document.querySelector('.winner').innerText = whoIsWinner;
+function openDrawModal(){
+    // Play the audio file
+    AUDIO.currentTime = 209;
+    AUDIO.play();
+
+    document.querySelector('.draw').classList.remove('hidden');
+    
     isGameOver = true;
 }
