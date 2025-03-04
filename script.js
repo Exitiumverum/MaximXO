@@ -1,11 +1,19 @@
-const gameBoard = createGameContainer();
+let gameBoard = createGameContainer();
+
 let isXTurn = true;
+let isGameOver = false;
 let whoIsWinner = '';
 
-
-renderGameBoard();
-
+if(isGameOver){
+    console.log(`${whoIsWinner} is the winner`);
+    document.querySelector('.game-over').classList.remove('hidden');
+}else{
+    renderGameBoard();
+}
+if(!isGameOver){
 document.addEventListener('click', handleCellClick);
+}
+
 
 function createGameContainer() {
     let gameContainer = document.createElement('div');
@@ -14,7 +22,7 @@ function createGameContainer() {
     for (let i = 0; i < 3; i++) {
         gameBoard[i] = [];
         for (let j = 0; j < 3; j++) {
-        gameBoard[i][j] = 'A';
+        gameBoard[i][j] = ' ';
     }
 }
 return gameBoard;
@@ -48,11 +56,23 @@ function renderGameBoard() {
 
 function handleCellClick(event) {
     const cell = event.target;
+    if(cell.classList.contains('btn')){
+        console.log('reset');
+        
+        isXTurn = true;
+        isGameOver = false;
+        gameBoard = createGameContainer();
+        console.log(whoIsWinner);
+        
+        document.querySelector('.winner').textContent = whoIsWinner;
+        renderGameBoard();
+        document.querySelector('.game-over').classList.add('hidden');
+    }
     const row = cell.getAttribute('data-row');
     const col = cell.getAttribute('data-col');
     console.log(row, col);
 
-    if (gameBoard[row][col] === 'A') {
+    if (gameBoard[row][col] === ' ') {
         if (isXTurn) {
         gameBoard[row][col] = 'X';
         isXTurn = false;
@@ -67,7 +87,10 @@ function handleCellClick(event) {
         }
     }
     if(checkWin()){
+        isGameOver = true;
+        document.querySelector('.game-over').classList.remove('hidden');
         console.log(`${whoIsWinner} is the winner`);
+        document.querySelector('.winner').textContent = whoIsWinner;
     }
 
     renderGameBoard();
@@ -75,20 +98,33 @@ function handleCellClick(event) {
 
 function checkWin() {
     for (let i = 0; i < 3; i++) {
-        if(gameBoard[i][0] === gameBoard[i][1] && gameBoard[i][1] === gameBoard[i][2] && gameBoard[i][0] !== 'A'){
+        if(gameBoard[i][0] === gameBoard[i][1] && gameBoard[i][1] === gameBoard[i][2] && gameBoard[i][0] !== ' '){
             whoIsWinner = gameBoard[i][0];
             return true;
         }
     }
-    
-        if(gameBoard[0][0] === gameBoard[1][1] && gameBoard[1][1] === gameBoard[2][2] && gameBoard[0][0] !== 'A'){
+   
+    for(let i = 0; i < 3; i++){
+        if(gameBoard[0][i] === gameBoard[1][i] && gameBoard[1][i] === gameBoard[2][i] && gameBoard[0][i] !== ' '){
+            whoIsWinner = gameBoard[0][i];
+            return true;
+    }
+    }
+
+        if(gameBoard[0][0] === gameBoard[1][1] && gameBoard[1][1] === gameBoard[2][2] && gameBoard[0][0] !== ' '){
             whoIsWinner = gameBoard[0][0];
             return true;
         }
-        if(gameBoard[0][2] === gameBoard[1][1] && gameBoard[1][1] === gameBoard[2][0] && gameBoard[0][2] !== 'A'){
+        if(gameBoard[0][2] === gameBoard[1][1] && gameBoard[1][1] === gameBoard[2][0] && gameBoard[0][2] !== ' '){
             whoIsWinner = gameBoard[0][2];
             return true;
         }
         return false;
         
+}
+
+function openModal(){
+    document.querySelector('.game-over').classList.remove('hidden');
+    document.querySelector('.winner').innerText = whoIsWinner;
+    isGameOver = true;
 }
