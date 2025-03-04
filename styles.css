@@ -92,7 +92,7 @@ tr{
     display: none;
 }
 
-/* @media (min-width: 600px) {
+@media (min-width: 600px) {
     .logo{
         width: 16em;
         height: 16em;
@@ -102,10 +102,10 @@ tr{
         height: 2em;
     }
     
-} */
+}
 
 
-/* @media (max-width: 600px) {
+@media (max-width: 600px) {
     .logo{
         width: 10em;
         height: 10em;
@@ -117,4 +117,4 @@ tr{
     body{
         background-color: red;
     }   
-} */
+}
