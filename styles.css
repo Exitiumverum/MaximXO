@@ -5,7 +5,7 @@ html{
 
 body{
     background-color: #c59040;
-    /* overflow: hidden; */
+    overflow: hidden;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -32,6 +32,7 @@ body{
     border-radius: 0.5em;
     border:none; 
     font-size: 1em;
+    background-color: #ce8e8e8;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
     transition: background-color 0.3s ease;
 }
@@ -111,10 +112,31 @@ tr{
         height: 10em;
     }
     td{
-        width: 1em;
-        height: 1em;
+        width: 2em;
+        height: 2em;
+        font-size: 1.4em;
     }
-    body{
+    /* body{
         background-color: red;
-    }   
+    }    */
+    .modal h1{
+        font-size: 1em;
+    }
+    .modal h2{
+        font-size: 0.8em;
+    }
+    .modal p{
+        font-size: 0.8em;
+    }
+}
+
+@media (hover: none) {
+    .btn:hover{
+    background-color: #e8e8e8;
+
+    }
+    td:hover{
+        cursor: default;
+        background-color: inherit;
+    }
 }
