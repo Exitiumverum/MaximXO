@@ -1,4 +1,4 @@
-const AUDIO = new Audio('./Blackened skies mix12.wav'); // Update the path as necessary
+const AUDIO = new Audio('/Blackened skies mix12.wav'); // Update the path as necessary
 
 let gameBoard = createGameContainer();
 let isXTurn = true;
